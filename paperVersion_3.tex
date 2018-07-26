@@ -1,0 +1,230 @@
+\documentclass{article}
+
+%%%%
+% \ref
+% \pageref
+% \footnote
+% \clearpage
+% \emph
+% \bf
+% ...y "label'/'lab'; font.size en reporttable
+% \authblk
+% \renewcommand
+%%%%
+\usepackage[utf8]{inputenc}
+\usepackage{longtable}
+\usepackage{authblk}
+
+
+\title{LOS INDICES DEL MUNDO}
+% autores
+\renewcommand\Authand{, y }
+\author[1]{\normalsize Estrella DelCurso}
+\author[2]{\normalsize Prossimo Deal Lado}
+
+\affil[1,2]{\small  Escuela de Ingeniería,Universidad de la vida\\
+\texttt{{delcurso,deallado}@vida.edu}}
+\affil[1]{\small Instituto de altas investigaciones financieras\\
+Banco del Parque\\
+\texttt{delcurso@bp.com}}
+
+\date{}
+
+%%%%
+\usepackage{Sweave}
+\begin{document}
+\input{paperVersion_3-concordance}
+
+\maketitle
+
+
+\begin{abstract}
+Este es mi primer trabajo en exploracion y modelamiento de indices usando LATEX. Este trabajo lo he hecho bajo la filosofía de trabajo replicable. Este es mi primer trabajo en exploracion y modelamiento de indices usando LATEX. Este trabajo lo he hecho bajo la filosofía de trabajo replicable. Este es mi primer trabajo en exploracion y modelamiento de indices usando LATEX. Este trabajo lo he hecho bajo la filosofía de trabajo replicable. Este es mi primer trabajo en exploracion y modelamiento de indices usando LATEX. Este trabajo lo he hecho bajo la filosofía de trabajo replicable.
+\end{abstract}
+
+\section*{Introducción}
+
+Aqui les presento mi investigacion sobre diversos indices sociales en el mundo. Los indices los conseguí de wikipedia, espero que les gusten mucho. Aqui les presento mi investigacion sobre diversos indices sociales en el mundo. Los indices los conseguí de wikipedia, espero que les gusten mucho.Aqui les presento mi investigacion sobre diversos indices sociales en el mundo. Los indices los conseguí de wikipedia, espero que les gusten mucho.Aqui les presento mi investigacion sobre diversos indices sociales en el mundo. Los indices los conseguí de wikipedia, espero que les gusten mucho.
+Aqui les presento mi investigacion sobre diversos indices sociales en el mundo. Los indices los conseguí de wikipedia, espero que les gusten mucho.Aqui les presento mi investigacion sobre diversos indices sociales en el mundo. Los indices los conseguí de wikipedia, espero que les gusten mucho.Aqui les presento mi investigacion sobre diversos indices sociales en el mundo. Los indices los conseguí de wikipedia, espero que les gusten mucho.
+
+Comencemos viendo que hay en la sección \ref{univariada} en la página \pageref{univariada}.
+
+\clearpage
+
+
+
+\section{Exploración Univariada}\label{univariada}
+
+En esta sección exploro cada índice. En esta sección exploro cada índice. En esta sección exploro cada índice. En esta sección exploro cada índice. En esta sección exploro cada índice. En esta sección exploro cada índice. En esta sección exploro cada índice. En esta sección exploro cada índice. En esta sección exploro cada índice.
+
+
+
+
+
+Para conocer el comportamiento de las variables se ha preparado la Tabla \ref{Tfrecuencias}, donde se describe la distribución de las modalidades de cada variable. Los números representan la situación de algun país en ese indicador, donde el mayor valor numérico es la mejor situación.
+
+% latex table generated in R 3.4.1 by xtable 1.8-2 package
+% Wed Jul 25 19:30:57 2018
+\begingroup\normalsize
+\begin{longtable}{llrrr}
+\caption{Tablas de Frecuencia de la variables en estudio} \\ 
+ \textbf{Variable} & \textbf{Levels} & $\mathbf{n}$ & $\mathbf{\%}$ & $\mathbf{\sum \%}$ \\ 
+  \hline \hline
+WorldFreedom & 1 & 55 & 26.7 & 26.7 \\ 
+   & 3 & 62 & 30.1 & 56.8 \\ 
+   & 5 & 89 & 43.2 & 100.0 \\ 
+   \hline
+ & all & 206 & 100.0 &  \\ 
+   \hline
+\hline
+EconomicFreedom & 1 & 21 & 10.1 & 10.1 \\ 
+   & 2 & 78 & 37.7 & 47.8 \\ 
+   & 3 & 74 & 35.8 & 83.6 \\ 
+   & 4 & 28 & 13.5 & 97.1 \\ 
+   & 5 & 6 & 2.9 & 100.0 \\ 
+   \hline
+ & all & 207 & 100.0 &  \\ 
+   \hline
+\hline
+PressFreedom & 1 & 22 & 10.7 & 10.7 \\ 
+   & 2 & 53 & 25.7 & 36.4 \\ 
+   & 3 & 66 & 32.0 & 68.5 \\ 
+   & 4 & 48 & 23.3 & 91.8 \\ 
+   & 5 & 17 & 8.2 & 100.0 \\ 
+   \hline
+ & all & 206 & 100.0 &  \\ 
+   \hline
+\hline
+Democracy & 1 & 60 & 29.1 & 29.1 \\ 
+   & 2 & 45 & 21.8 & 51.0 \\ 
+   & 4 & 82 & 39.8 & 90.8 \\ 
+   & 5 & 19 & 9.2 & 100.0 \\ 
+   \hline
+ & all & 206 & 100.0 &  \\ 
+   \hline
+\hline
+\hline
+\label{Tfrecuencias}
+\end{longtable}
+\endgroup
+
+Como apreciamos en la Tabla \ref{Tfrecuencias}, los países en la mejor situación son los menos, salvo en el caso del \emph{índice de libertas mundial}\footnote{Nótese que esto se puede deber a la {\bf menor} cantidad de categorías.}
+
+\clearpage
+
+Para resaltar lo anterior, tenemos la Figura \ref{barplots} en la página \pageref{barplots}. 
+
+
+%%%%% figure
+\begin{figure}[h]
+\centering
+\includegraphics{paperVersion_3-barplots}
+\caption{Distribución de Indicadores}
+\label{barplots}
+\end{figure}
+
+Además de la distribución de los variable, es importante saber el valor central. Como los valores son de naturaleza ordinal debemos pedir la {\bf mediana} y otras medidas de posición (como los \emph{cuartiles}, los que no pediremos pues son pocos valores). La mediana de cada variable la mostramos en la Tabla \ref{stats} en la página \pageref{stats}.
+
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Wed, Jul 25, 2018 - 19:30:57
+\begin{table}[!htbp] \centering 
+  \caption{Medidas estadísticas} 
+  \label{stats} 
+\begin{tabular}{@{\extracolsep{5pt}}lcc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Median} \\ 
+\hline \\[-1.8ex] 
+WorldFreedom & 206 & 3 \\ 
+EconomicFreedom & 207 & 3 \\ 
+PressFreedom & 206 & 3 \\ 
+Democracy & 206 & 2 \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} 
+
+\section{Exploración Bivariada}
+
+En este trabajo estamos interesados en el impacto de los otros indices en el nivel de Democracia. Veamos las relaciones bivariadas que tiene esta variable con todas las demás:
+
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Wed, Jul 25, 2018 - 19:31:00
+\begin{table}[!htbp] \centering 
+  \caption{Correlación de Democracia con las demás variables} 
+  \label{corrDem} 
+\begin{tabular}{@{\extracolsep{5pt}} ccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+WorldFreedom & EconomicFreedom & PressFreedom \\ 
+\hline \\[-1.8ex] 
+$0.896$ & $0.587$ & $0.771$ \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} 
+
+Veamos la correlación entre las variables independientes:
+
+
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Wed, Jul 25, 2018 - 19:31:00
+\begin{table}[!htbp] \centering 
+  \caption{Correlación entre variables independientes} 
+  \label{corrTableX} 
+\begin{tabular}{@{\extracolsep{5pt}} cccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & WorldFreedom & EconomicFreedom & PressFreedom \\ 
+\hline \\[-1.8ex] 
+WorldFreedom & 1 &  &  \\ 
+EconomicFreedom & 0.49 & 1 &  \\ 
+PressFreedom & 0.83 & 0.53 & 1 \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} 
+\clearpage
+
+\section{Modelos de Regresión}
+
+Finalmente, vemos los modelos propuestos. Primero sin la libertad mundial como independiente, y luego con está. Los resultados se muestran en la Tabla \ref{regresiones} de la página \pageref{regresiones}.
+
+
+
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Wed, Jul 25, 2018 - 19:31:00
+\begin{table}[!htbp] \centering 
+  \caption{Modelos de Regresión} 
+  \label{regresiones} 
+\begin{tabular}{@{\extracolsep{5pt}}lcc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{2}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-3} 
+\\[-1.8ex] & \multicolumn{2}{c}{Democracy} \\ 
+\\[-1.8ex] & (1) & (2)\\ 
+\hline \\[-1.8ex] 
+ WorldFreedom &  & 0.704$^{***}$ \\ 
+  &  & (0.046) \\ 
+  & & \\ 
+ EconomicFreedom & 0.377$^{***}$ & 0.291$^{***}$ \\ 
+  & (0.077) & (0.053) \\ 
+  & & \\ 
+ PressFreedom & 0.833$^{***}$ & 0.012 \\ 
+  & (0.065) & (0.070) \\ 
+  & & \\ 
+ Constant & $-$0.642$^{***}$ & $-$0.354$^{**}$ \\ 
+  & (0.199) & (0.138) \\ 
+  & & \\ 
+\hline \\[-1.8ex] 
+Observations & 206 & 206 \\ 
+R$^{2}$ & 0.637 & 0.830 \\ 
+Adjusted R$^{2}$ & 0.634 & 0.828 \\ 
+Residual Std. Error & 0.880 (df = 203) & 0.603 (df = 202) \\ 
+F Statistic & 178.197$^{***}$ (df = 2; 203) & 329.420$^{***}$ (df = 3; 202) \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{2}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table} 
+Como se vió en la Tabla \ref{regresiones}, cuando está presente el \emph{indice de libertad mundial}, el \emph{índice de libertad de prensa} pierde significancia.
+
+\end{document}

@@ -31,8 +31,9 @@ Banco del Parque\\
 \date{}
 
 %%%%
+\usepackage{Sweave}
 \begin{document}
-\SweaveOpts{concordance=TRUE}
+\input{paperVersion_6-concordance}
 
 \maketitle
 
@@ -58,35 +59,54 @@ En esta sección exploro cada índice. En esta sección exploro cada índice. En
 
 
 
-<<getData, echo=FALSE>>=
-# carga de datos
-filename="indexes.csv"
-dataidx=read.csv(filename, stringsAsFactors = FALSE)
-
-# previsión:
-level5=c("muy malo","malo","medio","bueno","muy bueno")
-level4=c("muy malo","malo","bueno","muy bueno")
-level3=c("muy malo","medio","muy bueno")
-
-@
 
 
 Para conocer el comportamiento de las variables se ha preparado la Tabla \ref{Tfrecuencias}, donde se describe la distribución de las modalidades de cada variable. Los números representan la situación de algun país en ese indicador, donde el mayor valor numérico es la mejor situación.
 
-<<results=tex,echo=FALSE>>=
-library(reporttools)
-library(xtable)
-
-titulo <- "Tablas de Frecuencia de la variables en estudio"
-tableNominal(vars = dataidx[, c(2:5)], 
-             cap = titulo, vertical = FALSE, 
-             lab ="Tfrecuencias",
-             caption.placement = "top",
-             font.size = "normalsize",
-             add.to.row = list(pos = list(0),
-                               command = "\\hline"))
-@
-
+% latex table generated in R 3.4.1 by xtable 1.8-2 package
+% Wed Jul 25 20:18:03 2018
+\begingroup\normalsize
+\begin{longtable}{llrrr}
+\caption{Tablas de Frecuencia de la variables en estudio} \\ 
+ \textbf{Variable} & \textbf{Levels} & $\mathbf{n}$ & $\mathbf{\%}$ & $\mathbf{\sum \%}$ \\ 
+  \hline \hline
+WorldFreedom & 1 & 55 & 26.7 & 26.7 \\ 
+   & 3 & 62 & 30.1 & 56.8 \\ 
+   & 5 & 89 & 43.2 & 100.0 \\ 
+   \hline
+ & all & 206 & 100.0 &  \\ 
+   \hline
+\hline
+EconomicFreedom & 1 & 21 & 10.1 & 10.1 \\ 
+   & 2 & 78 & 37.7 & 47.8 \\ 
+   & 3 & 74 & 35.8 & 83.6 \\ 
+   & 4 & 28 & 13.5 & 97.1 \\ 
+   & 5 & 6 & 2.9 & 100.0 \\ 
+   \hline
+ & all & 207 & 100.0 &  \\ 
+   \hline
+\hline
+PressFreedom & 1 & 22 & 10.7 & 10.7 \\ 
+   & 2 & 53 & 25.7 & 36.4 \\ 
+   & 3 & 66 & 32.0 & 68.5 \\ 
+   & 4 & 48 & 23.3 & 91.8 \\ 
+   & 5 & 17 & 8.2 & 100.0 \\ 
+   \hline
+ & all & 206 & 100.0 &  \\ 
+   \hline
+\hline
+Democracy & 1 & 60 & 29.1 & 29.1 \\ 
+   & 2 & 45 & 21.8 & 51.0 \\ 
+   & 4 & 82 & 39.8 & 90.8 \\ 
+   & 5 & 19 & 9.2 & 100.0 \\ 
+   \hline
+ & all & 206 & 100.0 &  \\ 
+   \hline
+\hline
+\hline
+\label{Tfrecuencias}
+\end{longtable}
+\endgroup
 
 Como apreciamos en la Tabla \ref{Tfrecuencias}, los países en la mejor situación son los menos, salvo en el caso del \emph{índice de libertas mundial}\footnote{Nótese que esto se puede deber a la {\bf menor} cantidad de categorías.}
 
@@ -98,96 +118,75 @@ Para resaltar lo anterior, tenemos la Figura \ref{barplots} en la página \pager
 %%%%% figure
 \begin{figure}[h]
 \centering
-<<barplots, echo=FALSE,fig=TRUE>>=
-par(mfrow=c(2,2))
-
-demoTable=table(dataidx[,5])
-names(demoTable)=level4
-demoTableRel=round(prop.table(demoTable)*100,1)
-title='Democracia'
-paleta='red'
-demoTableRelPlot=barplot(demoTableRel,main=title,
-                         col=paleta,ylim = c(0,100),
-                         ylab = "%")
-###
-ecoTable=table(dataidx[,3])
-names(ecoTable)=level5
-ecoTableRel=round(prop.table(ecoTable)*100,1)
-title='Libertad Económica'
-paleta='red'
-barplot(ecoTableRel,main=title,
-        col=paleta,ylim = c(0,100),
-        ylab = "%")
-
-#####
-worldTable=table(dataidx[,2])
-names(worldTable)=level3
-worldTableRel=round(prop.table(worldTable)*100,1)
-title='Libertad en el Mundo'
-paleta='red'
-barplot(worldTableRel,main=title,
-        col=paleta,ylim = c(0,100),
-        ylab = "%")
-####
-pressTable=table(dataidx[,4])
-names(pressTable)=level5
-pressTableRel=round(prop.table(pressTable)*100,1)
-title='Libertad de Prensa'
-paleta='red'
-barplot(pressTableRel,main=title,
-        col=paleta,ylim = c(0,100),
-        ylab = "%",las=2)
-@
+\includegraphics{paperVersion_6-barplots}
 \caption{Distribución de Indicadores}
 \label{barplots}
 \end{figure}
 
 Además de la distribución de los variable, es importante saber el valor central. Como los valores son de naturaleza ordinal debemos pedir la {\bf mediana} y otras medidas de posición (como los \emph{cuartiles}, los que no pediremos pues son pocos valores). La mediana de cada variable la mostramos en la Tabla \ref{stats} en la página \pageref{stats}.
 
-<<summary, results=tex, echo=FALSE>>=
-library(stargazer)
-vars1 <- dataidx[, c(2:5)]
-
-stargazer(vars1,title = "Medidas estadísticas", label = "stats",summary.stat = c("n", "median"))
-@
-
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Wed, Jul 25, 2018 - 20:18:03
+\begin{table}[!htbp] \centering 
+  \caption{Medidas estadísticas} 
+  \label{stats} 
+\begin{tabular}{@{\extracolsep{5pt}}lcc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Median} \\ 
+\hline \\[-1.8ex] 
+WorldFreedom & 206 & 3 \\ 
+EconomicFreedom & 207 & 3 \\ 
+PressFreedom & 206 & 3 \\ 
+Democracy & 206 & 2 \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} 
 
 \section{Exploración Bivariada}
 
 En este trabajo estamos interesados en el impacto de los otros indices en el nivel de Democracia. Veamos las relaciones bivariadas que tiene esta variable con todas las demás:
 
-<<corrDem, results=tex, echo=FALSE>>=
-explanans=names(dataidx)[c(2:4)]
-corrDem=cor(dataidx[,5],dataidx[,explanans],
-            use = "na.or.complete")
-stargazer(corrDem, title="Correlación de Democracia con las demás variables",label = "corrDem")
-@
-
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Wed, Jul 25, 2018 - 20:18:07
+\begin{table}[!htbp] \centering 
+  \caption{Correlación de Democracia con las demás variables} 
+  \label{corrDem} 
+\begin{tabular}{@{\extracolsep{5pt}} ccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+WorldFreedom & EconomicFreedom & PressFreedom \\ 
+\hline \\[-1.8ex] 
+$0.896$ & $0.587$ & $0.771$ \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} 
 
 Veamos la correlación entre las variables independientes:
 
 
-<<corrTableX, results=tex, echo=FALSE>>=
-corrTableX=round(cor(dataidx[explanans],
-               use = "na.or.complete"),2)
-corrTableX_copy=corrTableX
-# Hide upper triangle
-
-corrTableX[upper.tri(corrTableX)]<-""
-
-stargazer(corrTableX, title="Correlación entre variables independientes",label = 'corrTableX')
-@
-
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Wed, Jul 25, 2018 - 20:18:07
+\begin{table}[!htbp] \centering 
+  \caption{Correlación entre variables independientes} 
+  \label{corrTableX} 
+\begin{tabular}{@{\extracolsep{5pt}} cccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & WorldFreedom & EconomicFreedom & PressFreedom \\ 
+\hline \\[-1.8ex] 
+WorldFreedom & 1 &  &  \\ 
+EconomicFreedom & 0.49 & 1 &  \\ 
+PressFreedom & 0.83 & 0.53 & 1 \\ 
+\hline \\[-1.8ex] 
+\end{tabular} 
+\end{table} 
 Lo visto en la Tabla \ref{corrTableX} se refuerza claramente en la Figura \ref{corrPlotX}.
 
 \begin{figure}[h]
 \centering
 \begin{adjustbox}{width=7cm,height=7cm,clip,trim=1.5cm 0.5cm 0cm 1.5cm}
-<<corrPlotX, echo=FALSE,fig=TRUE>>=
-library(corrplot)
-corrplot(corrTableX_copy, type = "lower", diag = F,
-         addCoef.col = "black")
-@
+\includegraphics{paperVersion_6-corrPlotX}
 \end{adjustbox}
 \caption{correlación entre predictores}
 \label{corrPlotX}
@@ -200,18 +199,44 @@ corrplot(corrTableX_copy, type = "lower", diag = F,
 
 Finalmente, vemos los modelos propuestos. Primero sin la libertad mundial como independiente, y luego con está. Los resultados se muestran en la Tabla \ref{regresiones} de la página \pageref{regresiones}.
 
-<<regresiones, echo=FALSE>>=
-LinRegA = lm(Democracy ~ ., data = dataidx[,c(3:5)])
-LinRegB = lm(Democracy ~ ., data = dataidx[,c(2:5)])
-@
 
 
-<<regresionesPlot,results=tex, echo=false>>=
-stargazer(LinRegA,LinRegB,
-          title = "Modelos de Regresión", 
-          label = "regresiones")
-@
-
+% Table created by stargazer v.5.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Wed, Jul 25, 2018 - 20:18:07
+\begin{table}[!htbp] \centering 
+  \caption{Modelos de Regresión} 
+  \label{regresiones} 
+\begin{tabular}{@{\extracolsep{5pt}}lcc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{2}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-3} 
+\\[-1.8ex] & \multicolumn{2}{c}{Democracy} \\ 
+\\[-1.8ex] & (1) & (2)\\ 
+\hline \\[-1.8ex] 
+ WorldFreedom &  & 0.704$^{***}$ \\ 
+  &  & (0.046) \\ 
+  & & \\ 
+ EconomicFreedom & 0.377$^{***}$ & 0.291$^{***}$ \\ 
+  & (0.077) & (0.053) \\ 
+  & & \\ 
+ PressFreedom & 0.833$^{***}$ & 0.012 \\ 
+  & (0.065) & (0.070) \\ 
+  & & \\ 
+ Constant & $-$0.642$^{***}$ & $-$0.354$^{**}$ \\ 
+  & (0.199) & (0.138) \\ 
+  & & \\ 
+\hline \\[-1.8ex] 
+Observations & 206 & 206 \\ 
+R$^{2}$ & 0.637 & 0.830 \\ 
+Adjusted R$^{2}$ & 0.634 & 0.828 \\ 
+Residual Std. Error & 0.880 (df = 203) & 0.603 (df = 202) \\ 
+F Statistic & 178.197$^{***}$ (df = 2; 203) & 329.420$^{***}$ (df = 3; 202) \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{2}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table} 
 Como se vió en la Tabla \ref{regresiones}, cuando está presente el \emph{indice de libertad mundial}, el \emph{índice de libertad de prensa} pierde significancia.
 
 \clearpage
@@ -226,65 +251,15 @@ Así, propongo que calculemos conglomerados de países usando toda la informaci�
 siguiendo a \cite{reynolds_clustering_2006}
 . Los tres conglomerados se muestran en la Figura \ref{clustmap}.
 
-<<getMap, echo=FALSE,results=hide>>=
-library(rgdal)
-folder='world_map'
-file='world_map.shp'
-mapaFile=file.path(folder,file)
-mapaMundo = rgdal::readOGR(mapaFile,stringsAsFactors=F) 
-mapaMundoAll=merge(mapaMundo,dataidx, by.x='NAME', by.y='Country',all.x=F)
-@
 
 
-<<echo=FALSE>>=
-# nombres de las variables a utilizar
-dimensions=c("EconomicFreedom","PressFreedom","Democracy")
-#creando subconjunto
-dataCluster=mapaMundoAll@data[,c(dimensions)]
-# indicando que la data numerica es ordinal:
-dataCluster=as.data.frame(lapply(dataCluster,as.ordered))
-# llamando librería:
-library(cluster)
-# creando matriz de distancias
-dist=daisy(dataCluster,metric = "gower")
-# aplicando algoritmo
-pam_fit <- pam(dist, diss = TRUE, k = 3)
-# añadiendo los clusters al mapa:
-mapaMundoAll$cluster=pam_fit$clustering
-# check:
-# aggregate(Democracy~cluster, data=mapaMundoAll,FUN=mean,na.rm=T)
-#recodificando
-library(car)
-mapaMundoAll$cluster<-recode(mapaMundoAll$cluster,
-                             "1=2;2=3;3=1")
-@
 
 
 
 \begin{figure}[h]
 \centering
 \begin{adjustbox}{width=11cm,height=8cm,clip,trim=1cm 2.5cm 0cm 2.5cm}
-<<plotMap1, echo=FALSE, fig=TRUE>>=
-# que se pintara:
-varToPlot=mapaMundoAll$cluster
-
-#cuantos colores:
-numberOfColors = length(unique(varToPlot)) 
-
-#qué colores:
-library(RColorBrewer)
-colorForScale='Set2'
-paleta = brewer.pal(numberOfColors, colorForScale)
-
-# a dibujar:
-plot(mapaMundo,col='grey',border=0)
-plot(mapaMundoAll, col = paleta[varToPlot],border=F,add=T)
-legend('left', legend = c("TOP","MEDIUM","LOW"), 
-       fill = paleta,
-       cex = 0.6, 
-       bty = "n",
-       title="Conglomerado")
-@
+\includegraphics{paperVersion_6-plotMap1}
 \end{adjustbox}
 \caption{Paises conglomerados segun sus indicadores sociopolíticos}\label{clustmap}
 \end{figure}

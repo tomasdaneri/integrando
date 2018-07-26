@@ -1,0 +1,17 @@
+\begin{thebibliography}{}
+
+\bibitem[Gower, 1971]{gower_general_1971}
+Gower, J.~C. (1971).
+\newblock A {General} {Coefficient} of {Similarity} and {Some} of {Its}
+  {Properties}.
+\newblock {\em Biometrics}, 27(4):857.
+
+\bibitem[Reynolds et~al., 2006]{reynolds_clustering_2006}
+Reynolds, A.~P., Richards, G., de~la Iglesia, B., and Rayward-Smith, V.~J.
+  (2006).
+\newblock Clustering {Rules}: {A} {Comparison} of {Partitioning} and
+  {Hierarchical} {Clustering} {Algorithms}.
+\newblock {\em Journal of Mathematical Modelling and Algorithms},
+  5(4):475--504.
+
+\end{thebibliography}
