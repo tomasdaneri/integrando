@@ -29,20 +29,13 @@ En esta sección exploro cada índice.
 <<getData>>=
 # carga de datos
 filename="indexes.csv"
-dataidx=read.csv(filename, stringsAsFactors = FALSE)
-
-# previsión:
-level5=c("muy malo","malo","medio","bueno","muy bueno")
-level4=c("muy malo","malo","bueno","muy bueno")
-level3=c("muy malo","medio","muy bueno")
-
+dataidx=read.csv(filename, stringsAsFactors = T)
 @
 
 
 Este es el comportamiento de la democracia en el mundo, veamos primero las frecuencias absolutas:
 <<demoTable>>=
-demoTable=table(dataidx[,5])
-names(demoTable)=level4
+demoTable=table(dataidx$Democracy)
 demoTable
 @
 
@@ -65,8 +58,7 @@ barplot(demoTableRel,main=title,
 
 La Libertad económica en el mundo en una tabla:
 <<ecoTable>>=
-ecoTable=table(dataidx[,3])
-names(ecoTable)=level5
+ecoTable=table(dataidx$EconomicFreedom)
 ecoTable
 @
 
@@ -90,8 +82,7 @@ barplot(ecoTableRel,main=title,
 
 La Libertad general en el mundo en una tabla:
 <<worldTable>>=
-worldTable=table(dataidx[,2])
-names(worldTable)=level3
+worldTable=table(dataidx$WorldFreedom)
 worldTable
 @
 
@@ -114,8 +105,7 @@ barplot(worldTableRel,main=title,
 
 La Libertad de prensa en el mundo en una tabla:
 <<pressTable>>=
-pressTable=table(dataidx[,4])
-names(pressTable)=level5
+pressTable=table(dataidx$PressFreedom)
 pressTable
 @
 
@@ -147,9 +137,11 @@ Exploración Bivariada
 
 En este trabajo estamos interesados en el impacto de los otros indices en el nivel de Democracia. Veamos las relaciones bivariadas que tiene esta variable con todas las demás:
 <<corrDem>>=
-explanans=names(dataidx)[c(2:4)]
-corrDem=cor(dataidx[,5],dataidx[,explanans],
-    use = "na.or.complete")
+explanans=names(dataidx)[c(3:6)]
+corrDem=cor(x=dataidx[,2],
+            y=dataidx[,explanans],
+            use = "na.or.complete",
+            method = "spearman")
 corrDem
 @
 
@@ -162,22 +154,23 @@ Veamos la correlación entre las variables independientes:
 corrTable=round(cor(dataidx[explanans],
                use = "na.or.complete"),2)
 
-# Hide upper triangle
+# ocultar media matriz
 corrTable[upper.tri(corrTable)]<-""
 as.data.frame(corrTable)
 @
 
 
-Finalmente, vemos los modelos propuestos. Primero sin la libertad mundial como independiente:
+Finalmente, vemos los modelos propuestos. Primero sin el índice de democracia como independiente:
 <<regresionA>>=
-LinRegA = lm(Democracy ~ ., data = dataidx[,c(3:5)])
+LinRegA = lm(gdp ~ ., data = dataidx[,c(2:5)])
 summary(LinRegA)
+
 @
 
-Luego con la libertad mundial
+Luego incluyendo democracia.
 
 <<regresionB>>=
-LinRegB = lm(Democracy ~ ., data = dataidx[,c(2:5)])
+LinRegB = lm(gdp ~ ., data = dataidx[,c(2:6)])
 summary(LinRegB)
 @
 
