@@ -62,6 +62,16 @@ en bibliografia, se pone el archivo de zotero, aqui:
 
 
 
+RstudioCloud
+
+para pasar a github
+
+git push -u origin master
+git config user.email   xxx@xxx
+git config user.name   XXXXXXXXXXX
+git add --all && git commit -m "mensaje"
+git push --all
+
 
 
 
