@@ -14,7 +14,7 @@
 \usepackage{natbib}
 
 \usepackage[spanish]{babel}
-%\renewcommand\spanishtablename{Tabla}
+\renewcommand\spanishtablename{Tabla}
 
 
 \title{LOS INDICES DEL MUNDO}
@@ -227,9 +227,9 @@ stargazer(LinRegA,LinRegB,title = "Modelos de Regresión",
 Como acabamos de ver en la Tabla \ref{regresiones} en la página \pageref{regresiones}, si quisieras sintetizar la multidimensionalidad de nuestros indicadores, podríamos usar las cuatro variables ordinales que tenemos. 
 
 Así, propongo que calculemos conglomerados de países usando toda la información de esos indicadores. Como estas variables son ordinales, utilizaremos un proceso de conglomeración donde las distancia serán calculadas usando la medida {\bf gower} 
-%propuesta por \cite{gower_general_1971}
+propuesta por \cite{gower_general_1971}
 , y para los enlazamientos usaremos la técnica de {\bf medoides} 
-%siguiendo a \cite{reynolds_clustering_2006}
+siguiendo a \cite{reynolds_clustering_2006}
 . Los tres conglomerados se muestran en la Figura \ref{clustmap}.
 
 <<getMap, echo=FALSE,results=hide>>=
@@ -295,8 +295,8 @@ legend('left', legend = c("TOP","MEDIUM","LOW"),
 \caption{Paises conglomerados segun sus indicadores sociopolíticos}\label{clustmap}
 \end{figure}
 
-% \bibliographystyle{apalike}
+\bibliographystyle{apalike}
 % \renewcommand{\refname}{Bibliografia}
-% \bibliography{repro}
+\bibliography{reprobib}
 
 \end{document}

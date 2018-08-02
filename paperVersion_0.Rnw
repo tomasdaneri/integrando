@@ -1,5 +1,6 @@
 \documentclass{article}
 
+
 % plain R
 % chunk and its name
 % fig
