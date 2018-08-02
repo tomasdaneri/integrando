@@ -1,0 +1,74 @@
+python:
+
+lista: =[1,2,...] puedes modificar sus elementos
+tupla: =(1,2,...) creas la lista pero despues no la puedes modificar
+
+ubicacion: cuenta desde 0: " unaL[0] " me muestra el primer objeto de 
+                                       la lista creada llamada unaL
+
+diccionario 
+# dict:
+unD={"nombre":"pedro", "edad":20}
+
+nombre
+unD["nombre"]
+'pedro'
+
+
+
+Latex / Rstudio:
+es.sharelatex.com y google en general para guias
+
+
+adjustbox:
+trim->abajo derecha arriba izquierda
+debe haber begin y end arriba y abajo del plot en cuestion
+
+\begin{adjustbox}{width=7cm,height=7cm,clip,trim=1.5cm 0.5cm 0cm 1.5cm} 
+<<corrPlotX, echo=FALSE,fig=TRUE>>=
+library(corrplot)
+corrplot(corrTableX_copy, type = "lower", diag = F,
+         addCoef.col = "black")
+@
+\end{adjustbox}
+
+mapas:
+se trabajan con poligonos irregulares, o puntos, o vectores: shade files
+.dbf -> base de datos (nombres etc)
+.prj -> como se proyecta
+.shp -> para construir el mapa
+.shx -> para construir el mapa
+
+
+eval=FALSE ->  
+results=HIDE -> para ocultar los resultados 
+(no escribirlo, o escribir results=verbatim hace que salgan en el pdf)
+
+version 5 linea 224 -> probar cambiando results=verbatim por results=hide
+
+
+version 6
+linea 16 -> babel para cambiar idiomas de titulos y etc en plots y tablas
+PROBLEMA: tablas les pone cuadro por ejemplo, para eso se usa: 
+\renewcommand\spanishtablename{Tabla}
+
+linea 230 -> tecnicas citado
+usar zotero, guardar el archivo bib, y listo, deberia quedar como aca,
+luego escribir lo de las lineas 230 y 232
+\cite{gower_general_1971}
+
+en bibliografia, se pone el archivo de zotero, aqui:
+\bibliography{reprobib}
+
+
+
+
+
+
+
+
+
+
+
+
+
